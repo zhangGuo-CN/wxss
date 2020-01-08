@@ -1,3 +1,4 @@
+<!-- 管理页的详情 -->
 <view class="page">
     <view class="page_detail_hd">
         <view class="page_detail_title">{{activity_info.infos[0].F_Caption}}</view>
@@ -31,7 +32,7 @@
         </view>
     </view>
 
-    <block wx:for='{{detail_info.dates}}'>
+    <block wx:for='{{detail_info.dates}}' wx:key='key'>
         <view class="weui-cell" hidden='{{show_date}}'>
             <view class="weui-cell__hd" bindtap='getDetailedCheck' data-date='{{item.F_CheckDate}}'>
                 <image class='cell_image' src='../../image/right.png'></image>
@@ -41,7 +42,7 @@
     </block>
 
      <view hidden='{{date_info_hidden}}'>
-        <block wx:for='{{check_date_info}}'>
+        <block wx:for='{{check_date_info}}' wx:key='key'>
             <view class="weui-cell__bd">
                 <view class='label_name'>
                     {{item.F_UserName}}

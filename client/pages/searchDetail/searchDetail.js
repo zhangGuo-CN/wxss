@@ -1,7 +1,7 @@
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 //key:腾讯地图的key
 var demo = new QQMapWX({
-    key:''
+  key:'7DEBZ-NJPCR-TWUWX-WKEXR-C33WJ-2IBK5'
 });
 Page({
     data: {

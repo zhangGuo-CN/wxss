@@ -42,9 +42,9 @@ router.post('/create', function (req, res, next) {
         F_IfLocation: F_IfLocation
     };
     // console.log(act);
-    activity.create(act,function (act_res) {
+    activity.create(act, function (act_res) {
         console.log(act_res);
-        apply.apply(F_CreaterId,act_res.insertId,function (apply_res) {
+        apply.apply(F_CreaterId, act_res.insertId, function (apply_res) {
             var insert_res = {
                 code:1
             };

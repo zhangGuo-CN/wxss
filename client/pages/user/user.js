@@ -21,6 +21,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function () {
+      console.log('globalData', app.globalData)
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -104,13 +105,15 @@ Page({
         var me = this;
         wx.chooseImage({
             success: function (res) {
+                console.log('res', res)
                 var filePath = res.tempFilePaths[0];
-                console.log(filePath);
+              console.log('filePath', filePath);
                 // var fileName = filePath.match(/http.{7}(.*)/);
                 //fileName = fileName[1];
                 var fileName = Date.parse(new Date())+'.jpg';
-                console.log(fileName);
+              console.log('fileName', fileName);
                 uploadFn(filePath, fileName, me,function(avator_url){
+                  console.log('uploadFn avator_url', avator_url)
                     wx.request({
                         url: config.url + '/person/update',
                         data:{
@@ -119,7 +122,7 @@ Page({
                         },
                         method: 'POST',
                         success: function(res) {
-                            console.log(res.data);
+                          console.log("res.data", res.data);
                             app.globalData.avator_url = avator_url;
                         }
                     })

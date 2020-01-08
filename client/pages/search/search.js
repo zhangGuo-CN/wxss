@@ -36,6 +36,7 @@ Page({
                 'str': e.detail.value
             },
             success: function (res) {
+              console.log('/like', res)
                 that.setData({
                     processing: res.data.processing
                 });
@@ -46,15 +47,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // var that = this;
-        // wx.request({
-        //     url: config.url + '/activity/getall',
-        //     method: 'POST',
-        //     success: function (res) {
-        //         that.setData({
-        //             processing: res.data.processing
-        //         });
-        //     }
-        // })
+        var that = this;
+        wx.request({
+            url: config.url + '/activity/getall',
+            method: 'POST',
+            success: function (res) {
+                that.setData({
+                    processing: res.data.processing
+                });
+            },
+        })
     },
 });

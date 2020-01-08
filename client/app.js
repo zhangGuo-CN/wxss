@@ -2,6 +2,7 @@
 var config = require('./config.js');
 App({
     onLaunch: function () {
+        console.log("APP START!")
         // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
@@ -34,32 +35,32 @@ App({
         //     }
         //   }
         // })
-        wx.getUserInfo({
-            success: res => {
-                // 可以将 res 发送给后台解码出 unionId
-                var that = this;
-                that.globalData.userInfo = res.userInfo;
-                wx.request({
-                    url: config.url+'/person/',
-                    data: {
-                        'username':res.userInfo.nickName
-                    },
-                    method: 'POST',
-                    success: function(user_res){
-                        that.globalData.user_id = user_res.data.userId
-                        that.globalData.avator_url = user_res.data.avatorUrl
-                        console.log(user_res.data);
-                    }
-                })
-
-                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                // 所以此处加入 callback 以防止这种情况
-                if (this.userInfoReadyCallback) {
-                    this.userInfoReadyCallback(res)
-                }
-            }
-        });
-
+        //弃用的获得用户信息方法
+    //     wx.getUserInfo({
+    //         success: res => {
+    //             // 可以将 res 发送给后台解码出 unionId
+    //             var that = this;
+    //             that.globalData.userInfo = res.userInfo;
+    //             wx.request({
+    //                 url: config.url+'/person/',
+    //                 data: {
+    //                     'username':res.userInfo.nickName
+    //                 },
+    //                 method: 'POST',
+    //                 success: function(user_res){
+    //                     that.globalData.user_id = user_res.data.userId
+    //                     that.globalData.avator_url = user_res.data.avatorUrl
+    //                     console.log(user_res.data);
+    //                 }
+    //             })
+    //             // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //             // 所以此处加入 callback 以防止这种情况
+    //             if (this.userInfoReadyCallback) {
+    //                 this.userInfoReadyCallback(res)
+    //             }
+    //         }
+    //     });
+     
     },
     globalData: {
         userInfo: null,

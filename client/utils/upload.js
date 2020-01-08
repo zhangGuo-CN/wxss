@@ -8,24 +8,25 @@
  * 
  */
 var config = require('../config.js');
-var cosUrl = "http://" + config.cosRegion + ".file.myqcloud.com/files/v2/" + config.cosAPPID + "/" + config.cosBucketName +'/' + config.cosDirName;
+// var cosUrl = "http://" + config.cosRegion + ".file.myqcloud.com/files/v2/" + config.cosAPPID + "/" + config.cosBucketName +'/' + config.cosDirName;
+var cosUrl = "https://console.cloud.tencent.com/cos5/bucket/setting" + "?type=filelist" + "&bucketName=" + config.cosBucketName + "&path=" + config.cosDirName + "&region=" + config.cosRegion
 
 //填写自己的鉴权服务器地址
 var cosSignatureUrl = config.cosSignatureUrl;
+// var cosSignatureUrl = config.cosUrl;
 
 /**
  * 上传方法
  * filePath: 上传的文件路径
  * fileName： 上传到cos后的文件名
  */
-function upload(filePath, fileName, me,callback) {
-    // console.log(cosUrl+ '/' + fileName)
-
+function upload(filePath, fileName, me, callback) {
+    console.log(cosUrl+ '/' + fileName)
     // 鉴权获取签名
     wx.request({
         url: cosSignatureUrl,
         success: function(cosRes) {
-
+          console.log('cosRes', cosRes)
             // 签名
             var signature = cosRes.data
 
@@ -41,6 +42,7 @@ function upload(filePath, fileName, me,callback) {
                     op: 'upload'
                 },
                 success: function(uploadRes){
+                    console.log('success', success)
                     // var data = uploadRes.data;
                     // console.log('uploadRes', uploadRes.)
                     //do something
@@ -59,6 +61,9 @@ function upload(filePath, fileName, me,callback) {
                     console.log('e', e)
                 }
             })
+        },
+        fail: function (e) {
+          console.log('erro', e)
         }
     })
 }

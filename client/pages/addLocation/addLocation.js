@@ -28,7 +28,7 @@ Page({
         central_latitude: 20,
     },
     regionchange(e) {
-        console.log(e.type)
+      console.log("e.type", e.type)
     },
     /**
      * 点击marker的时候触发，显示callout
@@ -42,7 +42,7 @@ Page({
             borderRadius:5,
             padding:3,
             display:'ALWAYS',
-            textAlign:'cneter'
+            textAlign:'center'
         };
         that.setData({
             markers:[{
@@ -53,7 +53,7 @@ Page({
                 callout: callout_obj
             }]
         });
-        
+      console.log("markertap setData", that.data)
     },
     controltap(e) {
         var that = this;
@@ -71,10 +71,12 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
+      console.log("onLoad options", options)
         if (!getApp().data.haveLocation) {
             wx.getLocation({
                 type: 'wgs84',
                 success: function (res) {
+                  console.log("getlocation调用成功,res：",res)
                     that.setData({
                         central_latitude: res.latitude,
                         central_longitude: res.longitude
@@ -82,6 +84,7 @@ Page({
                 }
             });
             getApp().data.haveLocation = true;
+          console.log("页面载入获得用户地址", getApp().data)
             //页面退出的时候也要更新haveLocation！！！！！
             // !!!!!!!
         }
@@ -95,12 +98,14 @@ Page({
                 iconPath: "../../image/marker.png",
                 id: 0,
                 latitude: des_lat,
-                longitude: des_lng
+                longitude: des_lng,
+              // latitude: 23.099994,
+              // longitude: 113.324520,
             }],
             central_latitude: des_lat,
-            central_longitude: des_lng
+            central_longitude: des_lng,
         })
-
+      console.log("onLoad setData", that.data)
     },
 
     onReady: function (e) {
@@ -115,6 +120,7 @@ Page({
         getApp().data.activity_lat = des_lat;
         getApp().data.activity_lng = des_lng;
         getApp().data.activity_location = des_title;
+      console.log("getApp().data", getApp().data);
         wx.navigateBack({
             delta:1
         });

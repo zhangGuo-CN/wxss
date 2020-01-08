@@ -12,5 +12,5 @@
   </view>
 </view>
 <view class='update-info'>
-  <button class="weui-btn" type="primary" bindtap='changeAvator'>更改信息</button>
+  <!-- <button class="weui-btn" type="primary" bindtap='changeAvator'>更改信息</button> -->
 </view>

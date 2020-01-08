@@ -1,17 +1,18 @@
 //服务器地址
-var url = '' 
+var url = 'http://172.16.17.171:3000' 
 //腾讯云对象存储鉴权地址
-var cosSignatureUrl = '';
+var cosSignatureUrl = 
+'https://wxss-1300917475.cos.ap-chongqing.myqcloud.com';
 //腾讯云对象存储的区域：华东地区为sh
-var cosRegion = '';
+var cosRegion = 'ap-chongqing';
 //腾讯云对象存储cos的APPID
-var cosAPPID = '12XXXXXXXX';
+var cosAPPID = '1300917475';
 //腾讯云COSSecretId
-var cosSecretId = '';
+var cosSecretId = 'AKIDOYSbWAVdaGfnwsFu4ybxazSgcomUm76q';
 //腾讯云COSSecretKey
-var cosSecretKey = '';
+var cosSecretKey = 'pOq65nERO3VEm33pumSrHSMzLfpiS5TN';
 //bucket
-var cosBucketName = '';
+var cosBucketName = 'wxss-1300917475';
 //dir路径
 var cosDirName = '';
 

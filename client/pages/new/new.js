@@ -14,7 +14,7 @@ Page({
         checkboxItems: [
             { name: '拍照打卡', value: '1', checked: true },
             { name: '地点打卡', value: '2' },
-            { name: '人脸打卡', value: '3' }
+            { name: '人脸打卡', value: '3' },
         ],
         activity_location: ""
     },
@@ -121,6 +121,7 @@ Page({
     },
     
     formSubmit: function (e) {
+      console.log("submit start!");
         var ifPhoto = 0;
         var ifLocation = 0;
         var ifFace = 0;
@@ -156,13 +157,13 @@ Page({
             },
             method:'POST',
             success:function(res) {
-                // console.log(res.data);
+                console.log(res.data);
                 wx.switchTab({
                     url: '/pages/manage/manage'
                 })
             }
         })
 
-
+      console.log("submit Data!", app.globalData.user_id)
     }
 })

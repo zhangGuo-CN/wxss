@@ -13,7 +13,7 @@
                 <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
                     <view class="weui-panel weui-panel_access">
                         <view class="weui-panel__bd">
-                            <block wx:for="{{processing}}">
+                            <block wx:for="{{processing}}" wx:key="key">
                                 <navigator url='../detail/detail?activity_id={{item.F_ID}}' open-type='navigate'>
                                     <view class="weui-media-box weui-media-box_text">
                                         <view class="weui-media-box__title weui-media-box__title_in-text">{{item.F_Caption}}</view>
@@ -29,7 +29,7 @@
                 <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
                     <view class="weui-panel weui-panel_access">
                         <view class="weui-panel__bd">
-                            <block wx:for="{{completed}}">
+                            <block wx:for="{{completed}}" wx:key="key">
                                 <view class="weui-media-box weui-media-box_text">
                                     <view class="weui-media-box__title weui-media-box__title_in-text">{{item.F_Caption}}</view>
                                     <view class="weui-media-box__desc">{{item.F_StartDate}}——{{item.F_EndDate}}</view>

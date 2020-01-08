@@ -5,7 +5,7 @@ var distance = require('../../utils/getdistance.js');
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 //腾讯地图Key
 var demo = new QQMapWX({
-    key: ''
+  key: '7DEBZ-NJPCR-TWUWX-WKEXR-C33WJ-2IBK5'
 });
 const app = getApp();
 var photo_check_url = null;

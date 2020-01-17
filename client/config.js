@@ -8,9 +8,9 @@ var cosRegion = 'ap-chongqing';
 //腾讯云对象存储cos的APPID
 var cosAPPID = '1300917475';
 //腾讯云COSSecretId
-var cosSecretId = 'AKIDOYSbWAVdaGfnwsFu4ybxazSgcomUm76q';
+var cosSecretId = '';
 //腾讯云COSSecretKey
-var cosSecretKey = 'pOq65nERO3VEm33pumSrHSMzLfpiS5TN';
+var cosSecretKey = '';
 //bucket
 var cosBucketName = 'wxss-1300917475';
 //dir路径

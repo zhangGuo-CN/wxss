@@ -136,16 +136,13 @@ var cos = new COS({
  * filePath: 上传的文件路径
  * fileName： 上传到cos后的文件名
  */
-function upload(filePath, fileName, me, callback) {
-    console.log(cosUrl + '/' + fileName)
-     cos.postObject({
+function download(fileUrl, me, callback) {
+    console.log('fileUrl', fileUrl)
+     cos.getObject({
         Bucket: 'wxss-1300917475',
         Region: 'ap-chongqing',
-        Key: fileName,
-        FilePath: filePath, // wx.chooseImage 选择文件得到的 tmpFilePath
-        onProgress: function (info) {
-            console.log('onProgress', JSON.stringify(info));
-        }
+        Key: '1580971650000.jpg',
+      
     }, function(err, data) {
         console.log(err || data);
         // var upload_res = JSON.parse(data)
@@ -154,9 +151,6 @@ function upload(filePath, fileName, me, callback) {
         //     avator_path:data.location
         // })
         // console.log('upload_res', upload_res)
-        var avator_url = 'https://' + data.Location
-        console.log('location', avator_url)
-        callback(avator_url)
         if (err && err.error) {
             wx.showModal({
                 title: '返回错误',
@@ -177,10 +171,5 @@ function upload(filePath, fileName, me, callback) {
             });
         }
     });
-    // var upload_res = JSON.parse(uploadRes.data)
-    // me.setData({
-    //     avator_path:upload_res.data.source_url
-    // })
-    // callback(upload_res.location)
 };
-module.exports = upload
+module.exports = download

@@ -1,5 +1,6 @@
 // pages/user/user.js
 var uploadFn = require('../../utils/upload.js');
+var downloadFn = require('../../utils/download.js');
 var config = require('../../config.js');
 const app = getApp();
 Page({
@@ -21,7 +22,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function () {
-      console.log('globalData', app.globalData)
+        console.log('globalData', app.globalData)
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -107,22 +108,22 @@ Page({
             success: function (res) {
                 console.log('res', res)
                 var filePath = res.tempFilePaths[0];
-              console.log('filePath', filePath);
+                console.log('filePath', filePath);
                 // var fileName = filePath.match(/http.{7}(.*)/);
                 //fileName = fileName[1];
-                var fileName = Date.parse(new Date())+'.jpg';
-              console.log('fileName', fileName);
-                uploadFn(filePath, fileName, me,function(avator_url){
-                  console.log('uploadFn avator_url', avator_url)
+                var fileName = Date.parse(new Date()) + '.jpg';
+                console.log('fileName', fileName);
+                uploadFn(filePath, fileName, me, function (avator_url) {
+                    console.log('uploadFn avator_url', avator_url)
                     wx.request({
                         url: config.url + '/person/update',
-                        data:{
+                        data: {
                             'user_id': app.globalData.user_id,
                             'avator_url': avator_url
                         },
                         method: 'POST',
-                        success: function(res) {
-                          console.log("res.data", res.data);
+                        success: function (res) {
+                            console.log("res.data", res.data);
                             app.globalData.avator_url = avator_url;
                         }
                     })

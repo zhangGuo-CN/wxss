@@ -139,6 +139,9 @@ Page({
         wx.chooseImage({
             success: function (res) {
                 var filePath = res.tempFilePaths[0];
+                me.setData({
+                    photo: filePath
+                });
                 // var fileName = filePath.match(/http.{7}(.*)/);
                 // fileName = fileName[1];
                 var fileName = Date.parse(new Date()) + '.jpg';
@@ -149,7 +152,7 @@ Page({
                       me.setData({
                           photo: photo_url
                       });
-                    // console.log(photo_url);
+                    console.log('photo_url', photo_url);
                 });
             },
         })
@@ -257,7 +260,7 @@ Page({
         })
     },
     submitCheck: function(){
-        if(photo_check_res&&location_check_res&&face_check_res){
+        // if(photo_check_res&&location_check_res&&face_check_res){
             wx.request({
                 url: config.url + '/check',
                 method:'POST',
@@ -277,11 +280,11 @@ Page({
                 }
 
             })
-        }else{
-            wx.showToast({
-                title: '请完成所有验证',
-                duration: 1000
-            })
-        }
+        // }else{
+        //     wx.showToast({
+        //         title: '请完成所有验证',
+        //         duration: 1000
+        //     })
+        // }
     }
 })

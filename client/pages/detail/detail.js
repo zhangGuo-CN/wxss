@@ -74,7 +74,7 @@ Page({
                   haveApplyed = true;
                   that.setData({
                       apply_msg:'点击打卡'
-                  })
+                })
               }
           }
       })
@@ -172,7 +172,7 @@ Page({
   },
   submitCheck:function(){
       if(haveApplyed){
-          console.log(activity_id);
+          console.log('submitCheck activity_id', activity_id);
           wx.redirectTo({
               url: '../checkIn/checkIn?lat=' + lat + '&lng=' + lng +'&activityId=' + activity_id
               +'&face='+ face +'&location='+location

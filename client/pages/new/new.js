@@ -14,7 +14,7 @@ Page({
         checkboxItems: [
             { name: '拍照打卡', value: '1', checked: true },
             { name: '地点打卡', value: '2' },
-            { name: '人脸打卡', value: '3' },
+            // { name: '人脸打卡', value: '3' },
         ],
         activity_location: ""
     },

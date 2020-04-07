@@ -25,6 +25,7 @@ Page({
         photo: "../../image/avator.jpg",
         location_res: "等待验证",
         face_res: "等待验证",
+        photo_disabled:false,
         face_disabled:false,
         location_disabled:false
     },
@@ -38,7 +39,7 @@ Page({
         activity_lat = options.lat;
         activity_lng = options.lng;
         activity_id = options.activityId;
-        console.log(options.activityId);
+        console.log('options', options);
         if(options.face == 0){
             face_check_res = true;
         }
@@ -48,7 +49,7 @@ Page({
         console.log(options.face,options.location);
         that.setData({
             activity_title: options.title,
-            face_disabled: options.face==0?true:false,
+            face_disabled: options.face == 0 ? true : false,
             location_disabled: options.location == 0 ? true : false
         });
     },
@@ -172,19 +173,18 @@ Page({
                     lat: activity_lat,
                     lng: activity_lng
                 };
-                // console.log(p1, p2);
+                console.log(p1, p2);
                 demo.calculateDistance({
                     to: [{
                         latitude: p1.lat,
                         longitude: p1.lng
-                    }],
-                    from: {
+                    },{
                         latitude: p2.lat,
                         longitude: p2.lng
-                    },
+                        }],
                     success: function (res) {
                         var dis = res.result.elements[0].distance;
-                        if (dis <= 1000) {
+                        if (dis <= 100) {
                             location_check_res = true;
                             that.setData({
                                 location_res: "验证成功"
@@ -260,7 +260,7 @@ Page({
         })
     },
     submitCheck: function(){
-        // if(photo_check_res&&location_check_res&&face_check_res){
+        if(photo_check_res&&location_check_res&&face_check_res){
             wx.request({
                 url: config.url + '/check',
                 method:'POST',
@@ -280,11 +280,11 @@ Page({
                 }
 
             })
-        // }else{
-        //     wx.showToast({
-        //         title: '请完成所有验证',
-        //         duration: 1000
-        //     })
-        // }
+        }else{
+            wx.showToast({
+                title: '请完成所有验证',
+                duration: 1000
+            })
+        }
     }
 })

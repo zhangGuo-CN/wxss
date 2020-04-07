@@ -1,6 +1,6 @@
 //服务器地址
-// var url = 'http://172.16.17.171:3000' 
-var url = 'http://192.168.43.146:3000'
+var url = 'http://172.16.17.171:3000' 
+// var url = 'http://192.168.43.146:3000'
 //腾讯云对象存储鉴权地址
 var cosSignatureUrl = 
 'https://wxss-1300917475.cos.ap-chongqing.myqcloud.com';
